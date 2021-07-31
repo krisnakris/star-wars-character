@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import axios from 'axios';
 
-export default function PeopleDetail() {
+export default function PeopleDetail({ page }) {
   const [peopleDetail, setPeopleDetail] = useState({});
   const [loading, setLoading] = useState(true);
   const [listFilms, setListFilms] = useState([]);
@@ -59,7 +59,7 @@ export default function PeopleDetail() {
 
   useEffect(() => {
     function fetchPeopleDetail() {
-      axios('https://swapi.dev/api/people/' + params.id)
+      axios('https://swapi.dev/api/people/' + (params.id) )
         .then(res => {
           Promise.all([fetchFilms(res.data), fetchVehicles(res.data), fetchStarShips(res.data)])
           .then(response => {

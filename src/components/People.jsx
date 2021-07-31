@@ -24,12 +24,14 @@ const useStyles = makeStyles({
   },
 });
 
-export default function People({ data, index }) {
+export default function People({ data, index, page }) {
   const classes = useStyles();
   const history = useHistory();
 
   function detailPeople () {
-    history.push('/detail/' + (index + 1))
+    let idPeople = Math.floor((page - 1) * 10 + index + 1);
+    idPeople = idPeople > 17 ? idPeople + 1 : idPeople;
+    history.push('/detail/' + idPeople);
   }
 
   return (
