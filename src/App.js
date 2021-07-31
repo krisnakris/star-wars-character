@@ -1,23 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar.jsx';
+import { BrowserRouter as Router, Switch, Route  } from 'react-router-dom';
+import { Container, CircularProgress } from '@material-ui/core';
+import PeopleList from './components/PeopleList.jsx';
+import PeopleDetail from './components/PeopleDetail';
 
 function App() {
+  const [people, setPeople] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPeople() {
+      fetch('https://swapi.dev/api/people/')
+        .then(res => res.json())
+        .then(res => {
+          setPeople(res.results);
+          setLoading(false);
+        })
+    }
+    fetchPeople();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Navbar></Navbar>
+        <Container>
+          {
+            loading ? (
+              <CircularProgress></CircularProgress>
+            ) : (
+              <Switch>
+                <Route exact path='/'>
+                  <PeopleList data = { people }></PeopleList>
+                </Route>
+                <Route path='/detail/:id'>
+                  <PeopleDetail></PeopleDetail>
+                </Route>
+              </Switch>
+            )
+          }
+          
+        </Container>
+      </Router> 
     </div>
   );
 }
