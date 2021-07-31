@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
+import Movie from './Movie';
+import Vehicle from './Vehicle';
+import Spaceships from './Spaceships';
 
 const useStyles = makeStyles({
   root: {
@@ -103,38 +106,29 @@ export default function PeopleDetail({ page }) {
       ) : (
         <>
           <p>People Detail</p>
-          <Typography variant="h5" component="h2" color="primary">
-            { peopleDetail.name}
-          </Typography>          
-          <Typography className={classes.pos} color="textSecondary">
-            Height: { peopleDetail.height } cm
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            Weight: { peopleDetail.weight } cm
-          </Typography> 
-          <Typography className={classes.pos} color="textSecondary">
-            Birth Year: { peopleDetail.birth_year } cm
-          </Typography>             
-          <ol> Film List
-          {
-            listFilms.map((film) => {
-              return <li key= {film.title}> {film.title} </li>
-            })
-          }
+            <Typography variant="h5" component="h2" color="primary">
+              { peopleDetail.name}
+            </Typography>          
+            <Typography className={classes.pos} color="textSecondary">
+              Height: { peopleDetail.height } cm
+            </Typography>
+            <Typography className={classes.pos} color="textSecondary">
+              Weight: { peopleDetail.weight } cm
+            </Typography> 
+            <Typography className={classes.pos} color="textSecondary">
+              Birth Year: { peopleDetail.birth_year } cm
+            </Typography>             
+          <ol>
+            <p>Film List</p>
+            <Movie listMovie = { listFilms }></Movie>
           </ol>
-          <ol> Vehicles List
-          {
-            listVehicles.map((vehicles) => {
-              return <li key= {vehicles.name}> {vehicles.name} </li>
-            })
-          }
+          <ol> 
+            <p>Vehicle List</p>
+            <Vehicle listVehicles = { listVehicles }></Vehicle>
           </ol>
-          <ol> SpaceShips List
-          {
-            listStarships.map((spaceShip) => {
-              return <li key= {spaceShip.name}> {spaceShip.name} </li>
-            })
-          }
+          <ol> 
+            <p>Starships List</p>
+            <Spaceships listStarships = { listStarships}></Spaceships>
           </ol>
         </>
       )

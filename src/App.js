@@ -1,8 +1,8 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/Navbar.jsx';
 import { BrowserRouter as Router, Switch, Route  } from 'react-router-dom';
-import { Container, CircularProgress } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import PeopleList from './components/PeopleList.jsx';
 import PeopleDetail from './components/PeopleDetail';
 import { makeStyles } from '@material-ui/core/styles';
@@ -16,6 +16,10 @@ const useStylesPage = makeStyles((theme) => ({
 }));
 
 function App() {
+  useEffect(() => {
+    document.title = 'Star Wars'
+  }, [])
+
   return (
     <div className="App">
       <Router>

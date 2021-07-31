@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Movie({ listMovie }) {
+export default function Vehicle({ listVehicles }) {
   const classes = useStyles();
 
   return (
@@ -22,23 +22,25 @@ export default function Movie({ listMovie }) {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Film Name</TableCell>
-            <TableCell align="right">Director</TableCell>
-            <TableCell align="right">Producer</TableCell>
-            <TableCell align="right">Released Date</TableCell>
-            <TableCell align="right">Description</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell align="right">Model</TableCell>
+            <TableCell align="right">Manufacturer</TableCell>
+            <TableCell align="right">Cost in Credits</TableCell>
+            <TableCell align="right">Crew</TableCell>
+            <TableCell align="right">Passengers</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {listMovie.map((row) => (
-            <TableRow key={row.title}>
+          {listVehicles.map((row) => (
+            <TableRow key={row.name}>
               <TableCell component="th" scope="row">
-                {row.title}
+                {row.name}
               </TableCell>
-              <TableCell align="right">{row.director}</TableCell>
-              <TableCell align="right">{row.producer}</TableCell>
-              <TableCell align="right">{row.release_date}</TableCell>
-              <TableCell align="right">{row.opening_crawl}</TableCell>
+              <TableCell align="right">{row.model}</TableCell>
+              <TableCell align="right">{row.manufacturer}</TableCell>
+              <TableCell align="right">{row.cost_in_credits}</TableCell>
+              <TableCell align="right">{row.crew}</TableCell>
+              <TableCell align="right">{row.passengers}</TableCell>
             </TableRow>
           ))}
         </TableBody>

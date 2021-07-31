@@ -10,7 +10,6 @@ export default function Navbar() {
           component='button'
           variant='body2'
           onClick={() => {
-            console.log('Im a button');
           }}
         >
         Home
