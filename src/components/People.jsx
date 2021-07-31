@@ -35,7 +35,7 @@ export default function People({ data, index, page }) {
   }
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style= {{marginLeft : "25px", marginTop: "25px"}}>
       <CardContent>
         <Typography variant="h5" component="h2" color="primary">
           { data.name}

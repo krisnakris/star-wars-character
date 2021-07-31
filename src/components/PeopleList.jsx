@@ -54,7 +54,7 @@ export default function PeopleList() {
             <p>List of all people</p>
             <div className={classes.root}>
               <Grid container spacing={1}>
-                <Grid container item xs={12} spacing={2}>
+                <Grid container item xs= {12} spacing={2}>
                 {
                   people.map((people, index) => {
                     return <People data= { people } page = { page } index = { index } key= { index }></People>
@@ -63,7 +63,7 @@ export default function PeopleList() {
                 </Grid>
               </Grid>
             </div>
-            <div className={classes.root} style= {{ marginTop: '25px'}}>
+            <div className={classes.root} style= {{ marginTop: '55px'}}>
               <Pagination count={maxPage} 
                 color="primary"
                 page = {page}
